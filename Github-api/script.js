@@ -1,3 +1,4 @@
+
 function fetchJSONFile(url, returnData) {
 	var request = new XMLHttpRequest();
 
@@ -12,7 +13,7 @@ function fetchJSONFile(url, returnData) {
 			}
 		}
 	}
-	request.open('GET', 'https://api.github.com/users/heron2014', true);
+	request.open('GET', url, true);
 	request.send();
 }
 
@@ -23,4 +24,14 @@ function returnData (jsonData) {
 	document.getElementById('name').innerHTML = name;
 }
 
-fetchJSONFile('https://api.github.com/users/heron2014', returnData);
+
+var button = document.getElementById('searchButton');
+button.addEventListener('click', function () {
+	var user = document.getElementById('searchedName').value;
+	console.log(name);
+	fetchJSONFile('https://api.github.com/users/' + user, returnData);
+});
+
+
+
+// fetchJSONFile('https://api.github.com/users/heron2014', returnData);
